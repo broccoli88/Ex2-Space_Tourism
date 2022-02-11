@@ -1,5 +1,5 @@
 :root {
-  --text-color: hsla(0, 0%, 80%);
+  --text-color: #d0d6f9;
   --font-family-barlow-cond: "Barlow Condensed", sans-serif;
 }
 
@@ -22,10 +22,10 @@ body {
   color: var(--text-color);
   text-align: center;
 
-  overflow-inline: hidden;
+  overflow: hidden;
 
   max-width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
 
   background-image: url(../images/background-home-mobile.jpg);
   background-repeat: no-repeat;
@@ -35,8 +35,7 @@ body {
 /* ##################################TYPOGRAPHY################################# */
 
 h1,
-h2,
-h3 {
+h2 {
   text-transform: uppercase;
   font-family: "Bellefair", serif;
   color: white;
@@ -54,6 +53,9 @@ h2 {
 h3 {
   font-size: 1.6rem;
   font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  color: var(--text-color);
+  font-weight: 200;
 }
 
 @media (min-width: 768px) {
@@ -87,6 +89,8 @@ h3 {
 
   h3 {
     font-size: 2.8rem;
+    word-spacing: 8px;
+    letter-spacing: 4.72px;
   }
 }
 
@@ -101,9 +105,10 @@ a:visited {
 /* #################################### NAVBAR ###########################################*/
 
 header {
-  height: 100vh;
+  height: 100%;
 
   position: relative;
+  z-index: 8888;
 }
 
 .logo {
@@ -114,7 +119,7 @@ header {
 
 .hamburger,
 .hamburger-close {
-  display: block;
+  display: none;
 
   cursor: pointer;
 
@@ -124,19 +129,18 @@ header {
   z-index: 9999;
 }
 
-.hamburger {
-  display: none;
-}
-
 nav {
   height: 100%;
   width: 65vw;
 
   margin-left: auto;
+
+  position: absolute;
+  right: 0;
 }
 
 .nav-list {
-  height: 100%;
+  height: 100vh;
   padding: 14rem 0 0 3rem;
 
   list-style: none;
@@ -156,7 +160,13 @@ nav {
 
   transform: translateX(0);
   transition: 0.5s ease-in;
-  z-index: 8888;
+}
+
+@supports (backdrop-filter: blur(20px)) {
+  .nav-list {
+    background-color: hsla(0, 0%, 100%, 0.2);
+    backdrop-filter: blur(20px);
+  }
 }
 
 .nav-list li > span {
@@ -170,6 +180,10 @@ nav {
   opacity: 0.2;
 }
 
+.hamburger-visible {
+  display: block;
+}
+
 @media (min-width: 768px) {
   header {
     margin-top: 4rem;
@@ -179,16 +193,21 @@ nav {
   nav {
     height: 100%;
     width: 55vw;
+
+    position: inherit;
   }
 
   .nav-list {
     height: 100%;
     width: 100%;
-    padding: 4rem 0;
+    padding: 4rem 2rem;
 
     flex-direction: row;
     justify-content: space-around;
-    gap: 4rem;
+    gap: 2rem;
+
+    transform: translateX(0);
+    opacity: 1;
   }
 
   .nav-list li > span {
@@ -221,11 +240,85 @@ nav {
 }
 
 @media (min-width: 1440px) {
+  .nav {
+    position: inherit;
+  }
+
   .nav-list {
     padding: 4rem 3rem;
   }
 
   .nav-list li > span {
     display: inline-block;
+  }
+}
+
+/* ##################################### MAIN PAGE #################################### */
+
+.mainpage {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  padding-inline: 2.2rem;
+  margin-top: 15vh;
+}
+
+#main-explore-container {
+  margin-top: 8rem;
+}
+
+#explore {
+  width: 150px;
+  aspect-ratio: 1;
+  background-color: white;
+
+  font-family: "Bellefair", serif;
+  color: #0b0d17;
+  text-transform: uppercase;
+  font-size: 2rem;
+
+  cursor: pointer;
+
+  border: 0;
+  border-radius: 50%;
+}
+
+@media (min-width: 768px) {
+  .mainpage {
+    margin-top: 7vh;
+  }
+
+  .mainpage > p {
+    width: 50ch;
+    margin-inline: auto;
+  }
+
+  #explore {
+    width: 242px;
+    font-size: 3.2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .mainpage {
+    width: 40vw;
+    margin-top: 22vh;
+  }
+
+  .mainpage > p {
+    text-align: left;
+  }
+
+  #main-explore-container {
+    margin: 0;
+
+    position: absolute;
+    bottom: 20rem;
+    right: 40rem;
+  }
+
+  #explore {
+    width: 274px;
   }
 }

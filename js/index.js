@@ -5,12 +5,13 @@ const navList = document.querySelector('.nav-list');
 
 closeMenu.addEventListener('click', () => {
     navList.classList.toggle('hide')
-    openMenu.style.display = 'block'
-    closeMenu.style.display = 'none'
+    closeMenu.classList.toggle('hamburger-visible')
+    openMenu.classList.toggle('hamburger-visible')
+
 })
 
 openMenu.addEventListener('click', () => {
     navList.classList.toggle('hide')
-    openMenu.style.display = 'none'
-    closeMenu.style.display = 'block'
+    closeMenu.classList.toggle('hamburger-visible')
+    openMenu.classList.toggle('hamburger-visible')
 })
