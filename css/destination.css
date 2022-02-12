@@ -23,12 +23,12 @@ body {
   color: var(--text-color);
   text-align: center;
 
-  overflow: hidden;
+  overflow-inline: hidden;
 
   max-width: 100vw;
   min-height: 100vh;
 
-  background-image: url(../images/background-home-mobile.jpg);
+  background-image: url(../images/background-destination-mobile.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -48,7 +48,7 @@ h1 {
 }
 
 h2 {
-  font-size: 5.6rem;
+  font-size: 2.8rem;
 }
 
 h3 {
@@ -63,11 +63,11 @@ h3 {
 @media (min-width: 768px) {
   body {
     font-size: 1.6rem;
-    background-image: url(../images/background-home-tablet.jpg);
+    background-image: url(../images/background-destination-tablet.jpg);
   }
 
   h1 {
-    font-size: 15rem;
+    font-size: 8rem;
   }
 
   h2 {
@@ -82,7 +82,11 @@ h3 {
 @media (min-width: 1440px) {
   body {
     font-size: 1.8rem;
-    background-image: url(../images/background-home-desktop.jpg);
+    background-image: url(../images/background-destination-desktop.jpg);
+  }
+
+  h1 {
+    font-size: 10rem;
   }
 
   h2 {
@@ -109,7 +113,6 @@ a:visited {
 header {
   height: 15vh;
 
-  /* position: relative; */
   z-index: 8888;
 }
 
@@ -142,7 +145,7 @@ nav {
 }
 
 .nav-list {
-  height: 100vh;
+  height: 100%;
   padding: 14rem 0 0 3rem;
 
   list-style: none;
@@ -189,6 +192,7 @@ nav {
 @media (min-width: 768px) {
   header {
     margin-top: 4rem;
+    margin-bottom: 15rem;
     height: fit-content;
   }
 
@@ -242,6 +246,10 @@ nav {
 }
 
 @media (min-width: 1440px) {
+  header {
+    margin-bottom: 30rem;
+  }
+
   .nav {
     position: inherit;
   }
@@ -255,71 +263,158 @@ nav {
   }
 }
 
-/* ##################################### MAIN PAGE #################################### */
+/* ..............::::::::::: [ MOON ] :::::::::::::............... */
 
-.mainpage {
+.destination {
+  width: 70vw;
+  min-height: 100vh;
+
+  margin-inline: auto;
+
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
-
-  padding-inline: 2.2rem;
+  gap: 3rem;
 }
 
-#main-explore-container {
-  margin-top: 8rem;
+#alternate--font-color {
+  color: var(--alternate-font-color);
+  font-weight: bolder;
+  margin-right: 1rem;
+  font-size: 1.6rem;
 }
 
-#explore {
-  width: 150px;
+.planet {
+  width: 170px;
   aspect-ratio: 1;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.planet-selection {
+  list-style: none;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-family: var(--font-family-barlow-cond);
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.planet-selection > li {
+  position: relative;
+}
+
+.planet-selection > li::after {
+  content: "";
+  display: none;
+  height: 2px;
+  width: 100%;
   background-color: white;
 
-  font-family: "Bellefair", serif;
-  color: #0b0d17;
-  text-transform: uppercase;
-  font-size: 2rem;
+  position: absolute;
+  bottom: -9px;
+  left: 0;
+}
 
-  cursor: pointer;
+.planet-selection > li:hover::after {
+  display: block;
+}
 
-  border: 0;
-  border-radius: 50%;
+#separator {
+  height: 1px;
+  background-color: var(--alternate-font-color);
+}
+
+.planet-statistics {
+  margin-bottom: 6rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.planet-statistics section > h3 {
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
-  .mainpage {
-    margin-top: 7vh;
+  .destination {
+    position: relative;
   }
 
-  .mainpage > p {
-    width: 50ch;
+  .destination > h3 {
+    position: absolute;
+    top: -9rem;
+    left: -12vw;
+  }
+
+  .planet {
+    width: 300px;
+  }
+
+  .planet-selection {
+    font-size: 1.6rem;
+    width: 50vw;
     margin-inline: auto;
   }
 
-  #explore {
-    width: 242px;
-    font-size: 3.2rem;
+  .planet-statistics {
+    margin-bottom: 2rem;
+    margin-inline: auto;
+    flex-direction: row;
+    gap: 10rem;
+  }
+
+  .planet-statistics section > h3 {
+    font-size: 1.4rem;
+  }
+
+  .planet-statistics section > h2 {
+    font-size: 2.8rem;
   }
 }
 
 @media (min-width: 1440px) {
-  .mainpage {
-    width: 40vw;
-    margin-top: 22vh;
+  .destination {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .mainpage > p {
+  .planet {
+    width: 445px;
+  }
+
+  .info-container {
     text-align: left;
+    gap: 4rem;
   }
 
-  #main-explore-container {
-    margin: 0;
-
-    position: absolute;
-    bottom: 20rem;
-    right: 40rem;
+  .planet-selection {
+    width: 100%;
+    margin-inline: 0;
+    justify-content: flex-start;
+    gap: 6rem;
   }
 
-  #explore {
-    width: 274px;
+  #separator {
+    margin-top: 5rem;
+    width: 75%;
+  }
+
+  #planet-name {
+    width: 45ch;
+  }
+
+  .planet-statistics {
+    margin-inline: 0;
+  }
+
+  .destination > h3 {
+    left: 3vw;
+    top: -15rem;
   }
 }
